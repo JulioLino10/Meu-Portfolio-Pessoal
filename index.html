@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julio Lino | Dev Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Roboto', 'Segoe UI', sans-serif;
+      background: linear-gradient(120deg, #1e1e1e 0%, #23272f 50%, #007fe6 100%);
+      background-size: 200% 200%;
+      animation: gradientMove 8s ease-in-out infinite;
+      color: white;
+      scroll-behavior: smooth;
+    }
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in;
+      background: linear-gradient(120deg, #1e1e1e 70%, #007fe6 100%);
+      box-shadow: 0 8px 32px 0 rgba(0,127,230,0.15);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .logo {
+      font-size: 3em;
+      font-family: cursive;
+      color: #007fe6;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #007fe6; }
+      to { text-shadow: 0 0 20px #007fe6; }
+    }
+    .subtitle {
+      font-size: 1.2em;
+      margin-top: 0.5em;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #007fe6;
+      width: 0;
+      animation: typing 3s steps(30, end) forwards, blink 0.7s infinite;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 320px; }
+    }
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #007fe6; }
+    }
+    .social-icons {
+      margin-top: 1.5em;
+      animation: fadeIn 2.5s ease-in;
+    }
+    .social-icons a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.5em;
+      transition: transform 0.3s, color 0.3s;
+    }
+    .social-icons a:hover {
+      color: #007fe6;
+      transform: scale(1.2);
+    }
+    section {
+      padding: 4em 2em;
+      max-width: 900px;
+      margin: auto;
+      animation: fadeInUp 1.2s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h2 {
+      color: #00e6b8;
+      margin-bottom: 1em;
+      border-bottom: 2px solid #007fe6;
+      display: inline-block;
+      letter-spacing: 1px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #00e6b8 60%, #007fe6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h3, h4 {
+      font-family: 'Montserrat', 'Segoe UI', sans-serif;
+    }
+    .timeline, .projects, .readings {
+      display: grid;
+      gap: 1.5em;
+    }
+    .card {
+      background: #23272f;
+      padding: 1.5em;
+      border-radius: 16px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-left: 5px solid #007fe6;
+      box-shadow: 0 4px 24px #007fe62a;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 32px #007fe64a;
+      border-left: 5px solid #00e6b8;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(120deg, rgba(0,127,230,0.07), transparent 70%);
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      background: #007fe6;
+      padding: 0.2em 0.7em 0.2em 0.5em;
+      border-radius: 20px;
+      margin-right: 0.5em;
+      font-size: 0.9em;
+      gap: 0.3em;
+      box-shadow: 0 2px 8px rgba(0,127,230,0.15);
+    }
+    .badge i {
+      font-size: 1em;
+      margin-right: 0.2em;
+    }
+    .readings .card img {
+      box-shadow: 0 4px 16px rgba(0,127,230,0.15);
+      transition: transform 0.2s;
+    }
+    .readings .card img:hover {
+      transform: scale(1.08) rotate(-2deg);
+    }
+    .readings .card {
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .readings .card a {
+      color: #007fe6;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .readings .card a:hover {
+      text-decoration: underline;
+    }
+    /* Adicione ao seu <style> */
+    section i[class^="fab"], section i[class^="fas"] {
+      filter: drop-shadow(0 0 8px #007fe6aa);
+      transition: filter 0.3s, transform 0.3s;
+    }
+    section i[class^="fab"]:hover, section i[class^="fas"]:hover {
+      filter: drop-shadow(0 0 16px #00e6b8cc);
+      transform: scale(1.15) rotate(-4deg);
+    }
+    form input, form textarea {
+      background: #181c22;
+      color: #fff;
+      border: 1px solid #007fe6;
+      outline: none;
+      font-size: 1em;
+    }
+    form input:focus, form textarea:focus {
+      border-color: #00e6b8;
+      box-shadow: 0 0 8px #00e6b855;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Julio Lino Dev</div>
+    <div class="subtitle">Estudante de Ciência da Computação</div>
+    <div class="social-icons">
+      <a href="mailto:julio.lino107@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/julio-lino-58a7a2284" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/JulioLino10" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/_lino0z_/profilecard/?igsh=MTFna2FqenRmeXdxeQ==" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Sobre mim</h2>
+    <p>
+      Sou o Julio Lino, um entusiasta da tecnologia com espírito curioso e criativo. Tenho facilidade com hardware — desmontar, montar e entender o funcionamento de equipamentos sempre foi algo natural pra mim. Hoje, estou me aprofundando no universo da programação com foco em Data Science e Banco de Dados, unindo lógica e dados para criar soluções que façam sentido no mundo real.
+      <br><br>
+      Atualmente, estudo Python pelo SENAI e venho desenvolvendo projetos próprios e acadêmicos, como:
+      <br><br>
+      📦 E-commerce Python<br>
+      📊 Média dos Alunos
+      <br><br>
+      Esses projetos mostram meu compromisso em aprender na prática, explorando dados, automações e organização de informações. Gosto de desafios e estou construindo meus próprios sistemas, como uma plataforma de organização financeira pessoal, sempre focado em evoluir passo a passo.
+      <br><br>
+      Seja para programar, testar um circuito ou pensar soluções criativas, estou sempre com a cabeça funcionando — e os olhos voltados para o próximo aprendizado.
+    </p>
+    <div style="margin-top: 18px; font-size: 2em;">
+      <i class="fab fa-python" title="Python" style="color:#3776AB;margin-right:12px;"></i>
+      <i class="fab fa-js" title="JavaScript" style="color:#F7DF1E;margin-right:12px;"></i>
+      <i class="fab fa-html5" title="HTML5" style="color:#E44D26;margin-right:12px;"></i>
+      <i class="fab fa-css3-alt" title="CSS3" style="color:#1572B6;margin-right:12px;"></i>
+      <i class="fab fa-java" title="Java" style="color:#007396;margin-right:12px;"></i>
+      <i class="fas fa-database" title="SQL" style="color:#4DB33D;margin-right:12px;"></i>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experiência Profissional</h2>
+    <div class="timeline">
+      <div class="card">
+        <strong>InstruFiber Instrumentações e Tecnologia Ltda</strong><br>
+        <span class="badge"><i class="fas fa-briefcase"></i>Vendas Técnicas</span>
+        <small>01/2025 - Atualmente</small>
+        <ul>
+          <li>Prospecção ativa de clientes, elaboração de propostas comerciais e negociação.</li>
+          <li>Gestão do ciclo de vendas com uso de sistemas internos.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <strong>InstruFiber Instrumentações e Tecnologia Ltda</strong><br>
+        <span class="badge"><i class="fas fa-user-tie"></i>Assistente de Vendas</span>
+        <small>06/2024 - 01/2025</small>
+        <ul>
+          <li>Atendimento comercial, apresentação de produtos e follow-up com clientes.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <strong>InstruFiber Instrumentações e Tecnologia Ltda</strong><br>
+        <span class="badge"><i class="fas fa-file-alt"></i>Assistente Administrativo</span>
+        <small>02/2024 - 06/2024</small>
+        <ul>
+          <li>Controle de estoque, documentos fiscais, logística e relatórios administrativos.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <strong>Laboratório Analin</strong><br>
+        <span class="badge"><i class="fas fa-flask"></i>Estágio Assistente Administrativo</span>
+        <small>04/2023 - 02/2024</small>
+        <ul>
+          <li>Atendimento ao paciente, organização de agendas, processamento de guias e controle de materiais.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projetos</h2>
+    <div class="projects">
+      <div class="card">
+        <strong>API de autenticação</strong><br>
+        <p>Uma API RESTful feita com Java e Spring Boot para autenticação segura de usuários.</p>
+        <p>
+          <span class="badge"><i class="fab fa-java"></i>Java</span>
+          <span class="badge"><i class="fas fa-leaf"></i>Spring</span>
+        </p>
+      </div>
+      <div class="card">
+        <strong>Portfólio Interativo</strong><br>
+        <p>Site pessoal feito em HTML, CSS e JavaScript, com animações e responsividade.</p>
+        <p>
+          <span class="badge"><i class="fab fa-html5"></i>HTML5</span>
+          <span class="badge"><i class="fab fa-css3-alt"></i>CSS3</span>
+          <span class="badge"><i class="fab fa-js"></i>JavaScript</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+  <h2>Leituras Rápidas</h2>
+  <div class="readings" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+    
+    <div class="card">
+      <a href="https://www.amazon.com.br/Arquitetura-Limpa-Robert-Martin/dp/8550804606" target="_blank">
+        <img src="https://m.media-amazon.com/images/I/51b7XbfMIIL._SY445_SX342_.jpg" alt="Arquitetura Limpa" style="width:100px;float:right;margin-left:10px;border-radius:8px;">
+      </a>
+      <strong>Arquitetura Limpa</strong>
+      <p>Princípios para criar sistemas robustos, flexíveis e de fácil manutenção.</p>
+      <a href="https://www.amazon.com.br/Arquitetura-Limpa-Robert-Martin/dp/8550804606" target="_blank">Comprar</a>
+    </div>
+
+    <div class="card">
+      <a href="https://www.amazon.com.br/C%C3%B3digo-Limpo-Robert-Martin/dp/8576082675" target="_blank">
+        <img src="https://m.media-amazon.com/images/I/41-sN-mzwKL._SY445_SX342_.jpg" alt="Código Limpo" style="width:100px;float:right;margin-left:10px;border-radius:8px;">
+      </a>
+      <strong>Código Limpo</strong>
+      <p>Boas práticas para escrever código legível, eficiente e de fácil manutenção.</p>
+      <a href="https://www.amazon.com.br/C%C3%B3digo-Limpo-Robert-Martin/dp/8576082675" target="_blank">Comprar</a>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <section>
+    <h2>🚀 Stack em Evolução</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: center; margin-bottom: 18px;">
+      <div style="text-align:center;">
+        <i class="fab fa-python" style="font-size:2.5em;color:#3776AB;"></i><br>
+        <span style="font-size:0.95em;">Python</span>
+      </div>
+      <div style="text-align:center;">
+        <i class="fab fa-js" style="font-size:2.5em;color:#F7DF1E;"></i><br>
+        <span style="font-size:0.95em;">JavaScript</span>
+      </div>
+      <div style="text-align:center;">
+        <i class="fab fa-html5" style="font-size:2.5em;color:#E44D26;"></i><br>
+        <span style="font-size:0.95em;">HTML5</span>
+      </div>
+      <div style="text-align:center;">
+        <i class="fab fa-css3-alt" style="font-size:2.5em;color:#1572B6;"></i><br>
+        <span style="font-size:0.95em;">CSS3</span>
+      </div>
+      <div style="text-align:center;">
+        <i class="fab fa-java" style="font-size:2.5em;color:#007396;"></i><br>
+        <span style="font-size:0.95em;">Java</span>
+      </div>
+      <div style="text-align:center;">
+        <i class="fas fa-database" style="font-size:2.5em;color:#4DB33D;"></i><br>
+        <span style="font-size:0.95em;">SQL</span>
+      </div>
+    </div>
+    <div style="background:#23272f;padding:1.5em 1em;border-radius:12px;text-align:center;box-shadow:0 2px 12px #007fe62a;">
+      <h3 style="color:#00e6b8;margin-bottom:0.5em;">Meu Progresso Diário</h3>
+      <p style="margin-bottom:1em;">Acompanhe meu ritmo de estudos e evolução em tempo real!</p>
+      <div id="progress-bars" style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;">
+        <div>
+          <span style="font-size:0.95em;">Python</span>
+          <div style="background:#333;border-radius:8px;width:120px;height:12px;overflow:hidden;margin:4px 0;">
+            <div id="bar-python" style="background:#3776AB;height:100%;width:0%;transition:width 1.2s;"></div>
+          </div>
+        </div>
+        <div>
+          <span style="font-size:0.95em;">JavaScript</span>
+          <div style="background:#333;border-radius:8px;width:120px;height:12px;overflow:hidden;margin:4px 0;">
+            <div id="bar-js" style="background:#F7DF1E;height:100%;width:0%;transition:width 1.2s;"></div>
+          </div>
+        </div>
+        <div>
+          <span style="font-size:0.95em;">SQL</span>
+          <div style="background:#333;border-radius:8px;width:120px;height:12px;overflow:hidden;margin:4px 0;">
+            <div id="bar-sql" style="background:#4DB33D;height:100%;width:0%;transition:width 1.2s;"></div>
+          </div>
+        </div>
+      </div>
+      <small style="color:#aaa;">*Valores ilustrativos, atualizados conforme meus estudos.</small>
+    </div>
+    <script>
+      // Animação dos progressos (valores fictícios)
+      window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          document.getElementById('bar-python').style.width = '80%';
+          document.getElementById('bar-js').style.width = '60%';
+          document.getElementById('bar-sql').style.width = '50%';
+        }, 600);
+      });
+    </script>
+  </section>
+
+  <section>
+    <h2>💡 Curiosidades Sobre Mim</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; align-items: flex-start;">
+      <div style="background:#23272f;padding:1.2em 1.5em;border-radius:12px;max-width:320px;box-shadow:0 2px 12px #007fe62a;">
+        <i class="fas fa-microchip" style="font-size:2em;color:#00e6b8;"></i>
+        <h4 style="margin:0.5em 0 0.2em 0;">Apaixonado por Hardware</h4>
+        <p style="margin:0;">Adoro desmontar e montar computadores, entender como cada peça funciona e buscar sempre a melhor performance.</p>
+      </div>
+      <div style="background:#23272f;padding:1.2em 1.5em;border-radius:12px;max-width:320px;box-shadow:0 2px 12px #007fe62a;">
+        <i class="fas fa-brain" style="font-size:2em;color:#007fe6;"></i>
+        <h4 style="margin:0.5em 0 0.2em 0;">Aprendizado Contínuo</h4>
+        <p style="margin:0;">Estou sempre estudando algo novo, seja uma linguagem, framework ou conceito de ciência de dados.</p>
+      </div>
+      <div style="background:#23272f;padding:1.2em 1.5em;border-radius:12px;max-width:320px;box-shadow:0 2px 12px #007fe62a;">
+        <i class="fas fa-gamepad" style="font-size:2em;color:#F7DF1E;"></i>
+        <h4 style="margin:0.5em 0 0.2em 0;">Games & Lógica</h4>
+        <p style="margin:0;">Gosto de jogos que desafiam o raciocínio, como xadrez, sudoku e games de estratégia.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📬 Contato Rápido</h2>
+    <form action="mailto:julio.lino107@gmail.com" method="POST" enctype="text/plain" style="background:#23272f;padding:1.5em 1em;border-radius:12px;max-width:400px;margin:auto;box-shadow:0 2px 12px #007fe62a;">
+      <label for="nome" style="display:block;margin-bottom:6px;">Nome:</label>
+      <input type="text" id="nome" name="nome" required style="width:100%;padding:8px;border-radius:6px;border:none;margin-bottom:12px;">
+      <label for="mensagem" style="display:block;margin-bottom:6px;">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" rows="3" required style="width:100%;padding:8px;border-radius:6px;border:none;margin-bottom:12px;"></textarea>
+      <button type="submit" style="background:#007fe6;color:white;padding:10px 24px;border:none;border-radius:6px;font-weight:bold;cursor:pointer;">Enviar</button>
+    </form>
+  </section>
+
+  <!-- Adicione ao final do body para um toque JavaScript visual -->
+  <script>
+    // Efeito de partículas simples no header
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.querySelector('header');
+      for(let i=0; i<18; i++) {
+        const dot = document.createElement('div');
+        dot.style.position = 'absolute';
+        dot.style.width = dot.style.height = `${Math.random()*6+4}px`;
+        dot.style.borderRadius = '50%';
+        dot.style.background = '#007fe6';
+        dot.style.opacity = 0.18 + Math.random()*0.2;
+        dot.style.top = `${Math.random()*90+5}%`;
+        dot.style.left = `${Math.random()*95}%`;
+        dot.style.zIndex = 0;
+        dot.style.filter = 'blur(1.5px)';
+        header.appendChild(dot);
+      }
+      header.style.position = 'relative';
+    });
+  </script>
+</body>
+</html>
