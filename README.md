@@ -28,9 +28,3 @@ Este é meu portfólio pessoal feito com **HTML, CSS e JavaScript**, onde compar
 - **Responsividade via media queries**
 
 ---
-
-## 📸 Visual
-
-![preview](https://github.com/JulioLino10/portfolio/raw/main/preview.png)
-
----
